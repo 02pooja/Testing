@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         rvHeadline = findViewById(R.id.rView);
         rawViewModel = ViewModelProviders.of(this).get(RawViewModel.class);
         rawViewModel.init();
-        rawViewModel.getNewsRepository().observe(this, newsResponse -> {
+        rawViewModel.getRawRepository().observe(this, newsResponse -> {
         List<RawModel> newsArticles = newsResponse.getRows();
             raweArrayList.addAll(newsArticles);
             rawAdapter.notifyDataSetChanged();

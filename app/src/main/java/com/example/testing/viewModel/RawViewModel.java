@@ -20,7 +20,7 @@ public class RawViewModel  extends ViewModel {
 
     }
 
-    public LiveData<RowResponse> getNewsRepository() {
+    public LiveData<RowResponse> getRawRepository() {
         return mutableLiveData;
     }
 }
