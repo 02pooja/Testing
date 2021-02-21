@@ -11,37 +11,37 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RawRepsitory {
-    private static RawRepsitory newsRepository;
+    private static RawRepsitory rawRepository;
 
     public static RawRepsitory getInstance(){
-        if (newsRepository == null){
-            newsRepository = new RawRepsitory();
+        if (rawRepository == null){
+            rawRepository = new RawRepsitory();
         }
-        return newsRepository;
+        return rawRepository;
     }
 
-    private ApiInterface newsApi;
+    private ApiInterface rawApi;
 
     public RawRepsitory(){
-        newsApi = ApiClient.cteateService(ApiInterface.class);
+        rawApi = ApiClient.cteateService(ApiInterface.class);
     }
 
-    public MutableLiveData<RowResponse> getNews(){
-        MutableLiveData<RowResponse> newsData = new MutableLiveData<>();
-        newsApi.getNewsList().enqueue(new Callback<RowResponse>() {
+    public MutableLiveData<RowResponse> getrawdata(){
+        MutableLiveData<RowResponse> rawData = new MutableLiveData<>();
+        rawApi.getRowList().enqueue(new Callback<RowResponse>() {
             @Override
             public void onResponse(Call<RowResponse> call,
                                    Response<RowResponse> response) {
                 if (response.isSuccessful()){
-                    newsData.setValue(response.body());
+                    rawData.setValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<RowResponse> call, Throwable t) {
-                newsData.setValue(null);
+                rawData.setValue(null);
             }
         });
-        return newsData;
+        return rawData;
     }
 }

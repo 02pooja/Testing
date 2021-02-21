@@ -16,50 +16,50 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class RawAdapter  extends RecyclerView.Adapter<RawAdapter.NewsViewHolder> {
+public class RawAdapter  extends RecyclerView.Adapter<RawAdapter.RawsViewHolder> {
 
     Context context;
-    ArrayList<RawModel> articles;
+    ArrayList<RawModel> rawdata;
 
     public RawAdapter(Context context, ArrayList<RawModel> articles) {
         this.context = context;
-        this.articles = articles;
+        this.rawdata = articles;
     }
 
     @NonNull
     @Override
-    public RawAdapter.NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RawAdapter.RawsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.row_item, parent, false);
-        return new  NewsViewHolder(view);
+        return new  RawsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RawAdapter.NewsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RawAdapter.RawsViewHolder holder, int position) {
 
-        if(articles.get(position).getTitle()!=null) {
-            holder.tvName.setText(articles.get(position).getTitle().toString());
+        if(rawdata.get(position).getTitle()!=null) {
+            holder.tvName.setText(rawdata.get(position).getTitle().toString());
         }
-        if(articles.get(position).getDescription()!=null) {
-            holder.tvDesCription.setText(articles.get(position).getDescription().toString());
+        if(rawdata.get(position).getDescription()!=null) {
+            holder.tvDesCription.setText(rawdata.get(position).getDescription().toString());
         }
 
-        if(articles.get(position).getImageHref()!=null) {
-            Picasso.get().load(articles.get(position).getImageHref()).into(holder.ivNews);
+        if(rawdata.get(position).getImageHref()!=null) {
+            Picasso.get().load(rawdata.get(position).getImageHref()).into(holder.ivNews);
         }
     }
 
     @Override
     public int getItemCount() {
-        return articles.size();
+        return rawdata.size();
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder{
+    public class RawsViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvName;
         TextView tvDesCription;
         ImageView ivNews;
 
-        public NewsViewHolder(@NonNull View itemView) {
+        public RawsViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.title);

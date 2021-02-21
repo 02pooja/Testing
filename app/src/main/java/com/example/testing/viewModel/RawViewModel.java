@@ -9,14 +9,14 @@ import com.example.testing.repository.RawRepsitory;
 
 public class RawViewModel  extends ViewModel {
     private MutableLiveData<RowResponse> mutableLiveData;
-    private RawRepsitory newsRepository;
+    private RawRepsitory rawRepository;
 
     public void init(){
         if (mutableLiveData != null){
             return;
         }
-        newsRepository = RawRepsitory.getInstance();
-        mutableLiveData = newsRepository.getNews();
+        rawRepository = RawRepsitory.getInstance();
+        mutableLiveData = rawRepository.getrawdata();
 
     }
 

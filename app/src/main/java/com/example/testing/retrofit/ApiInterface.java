@@ -8,5 +8,5 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
     @GET("facts.json")
-    Call<RowResponse> getNewsList();
+    Call<RowResponse> getRowList();
 }
